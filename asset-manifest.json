@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/RinatAshurko/my-app.git/static/css/main.fe6a728c.chunk.css",
+    "main.js": "/RinatAshurko/my-app.git/static/js/main.de93862c.chunk.js",
+    "main.js.map": "/RinatAshurko/my-app.git/static/js/main.de93862c.chunk.js.map",
+    "runtime-main.js": "/RinatAshurko/my-app.git/static/js/runtime-main.7ab87a0e.js",
+    "runtime-main.js.map": "/RinatAshurko/my-app.git/static/js/runtime-main.7ab87a0e.js.map",
+    "static/js/2.2b6efd15.chunk.js": "/RinatAshurko/my-app.git/static/js/2.2b6efd15.chunk.js",
+    "static/js/2.2b6efd15.chunk.js.map": "/RinatAshurko/my-app.git/static/js/2.2b6efd15.chunk.js.map",
+    "index.html": "/RinatAshurko/my-app.git/index.html",
+    "static/css/main.fe6a728c.chunk.css.map": "/RinatAshurko/my-app.git/static/css/main.fe6a728c.chunk.css.map",
+    "static/js/2.2b6efd15.chunk.js.LICENSE.txt": "/RinatAshurko/my-app.git/static/js/2.2b6efd15.chunk.js.LICENSE.txt",
+    "static/media/error.42292aa1.gif": "/RinatAshurko/my-app.git/static/media/error.42292aa1.gif",
+    "static/media/mjolnir.61f31e18.png": "/RinatAshurko/my-app.git/static/media/mjolnir.61f31e18.png",
+    "static/media/thor.533e3a5e.jpeg": "/RinatAshurko/my-app.git/static/media/thor.533e3a5e.jpeg",
+    "static/media/vision.067d4ae1.png": "/RinatAshurko/my-app.git/static/media/vision.067d4ae1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7ab87a0e.js",
+    "static/js/2.2b6efd15.chunk.js",
+    "static/css/main.fe6a728c.chunk.css",
+    "static/js/main.de93862c.chunk.js"
+  ]
+}
