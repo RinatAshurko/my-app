@@ -7,6 +7,7 @@ import AppHeader from "../appHeader/AppHeader";
 import ComicsPage from "../pages/ComicsPage";
 import MainPage from "../pages/MainPage";
 import ErrorPage from "../pages/ErrorPage";
+import SingleComicPage from "../pages/SingleComicPage";
 
 const App = () => {
         return (
@@ -18,6 +19,7 @@ const App = () => {
                                 <Route path='/comics' element={<ComicsPage/>}/> 
                                 <Route path='/' element={<MainPage/>}/> 
                                 <Route path='*' element={<ErrorPage/>}/>
+                                <Route path='/comics/:comicId' element={<SingleComicPage/>}></Route>
                             </Routes>
                         </main>
                     </div>
