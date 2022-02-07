@@ -17,11 +17,11 @@ const Comics =  () => {
 
 
 
-    const {loading, error, getComicsChars} = useMarvelService();
+    const {loading, error, getAllComics} = useMarvelService();
 
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
-        getComicsChars(offset)
+        getAllComics(offset)
             .then(onComicsListLoaded);
     }
 

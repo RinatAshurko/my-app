@@ -15,7 +15,7 @@ const CharList  = (props) => {
 
 
 
-    const {loading, error, getAllCharacters,} = useMarvelService();
+    const {loading, error, getAllCharacters} = useMarvelService();
 
     const itemsRef = useRef([]);
 
