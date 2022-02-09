@@ -48,7 +48,6 @@ const Comics =  () => {
     function renderComic(arr) {
         const items = arr.map((item, i) => {
             return(
-                <>
                 <li
                 className="comics__item"
                 key={i}
@@ -58,8 +57,7 @@ const Comics =  () => {
                         <div className="comics__item-name">{item.title}</div>
                         <div className="comics__item-price">{item.price}</div>
                     </Link>
-                </li>
-                </>
+                </li>  
             )
         })
 

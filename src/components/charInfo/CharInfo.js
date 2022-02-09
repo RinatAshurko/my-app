@@ -97,10 +97,10 @@ const View = ({char}) => {
                     comics.map((item, i) => {
                         if (i > 10) return;
                         return (
-                            <li  key ={i} className="char__comics-item" available={available} >
+                            <li  src={item.id} key ={i} className="char__comics-item" available={available} >
                                 <Link to={`/characters/${char.id}/comics`}>
                                     {item.name}
-                                </Link>
+                                </Link>  
                             </li>
                         )
                     })
@@ -108,6 +108,7 @@ const View = ({char}) => {
             </ul>
     </>
     )
+
 }
 
 export default CharInfo;

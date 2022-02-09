@@ -17,7 +17,7 @@ const App = () => {
                         <main>
                             <Routes>
                                 <Route exact path='/' element={<MainPage/>}/> 
-                                <Route exact path ='/:comicId' element={<ListPage/>}/>
+                                <Route exact path ='/characters/:comicId/comics' element={<ListPage/>}/>
                                 <Route exact path='*' element={<ErrorPage/>}/>
                                 <Route exact path='/comics' element={<ComicsPage/>}/> 
                                 <Route exact path='/comics/:comicId' element={<SingleComicPage/>}/>
