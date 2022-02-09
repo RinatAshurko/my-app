@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import './charInfo.scss';
 
@@ -7,7 +8,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
 import Skeleton from '../skeleton/Skeleton';
 
-import thor from '../../resources/img/thor.jpeg';
 
 const CharInfo = (props) => {
 
@@ -97,9 +97,11 @@ const View = ({char}) => {
                     comics.map((item, i) => {
                         if (i > 10) return;
                         return (
-                        <li key ={i} className="char__comics-item" available={available}>
-                            {item.name}
-                        </li>
+                            <li  key ={i} className="char__comics-item" available={available} >
+                                <Link to={`/characters/${char.id}/comics`}>
+                                    {item.name}
+                                </Link>
+                            </li>
                         )
                     })
                 }

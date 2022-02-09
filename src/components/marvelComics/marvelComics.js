@@ -45,7 +45,7 @@ const Comics =  () => {
 
 
 
-    function renderChar(arr) {
+    function renderComic(arr) {
         const items = arr.map((item, i) => {
             return(
                 <>
@@ -70,7 +70,7 @@ const Comics =  () => {
         )
     }
 
-    const items = renderChar(comicsList);
+    const items = renderComic(comicsList);
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading && !newItemLoading ? <Spinner/> : null;

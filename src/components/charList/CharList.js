@@ -50,8 +50,6 @@ const CharList  = (props) => {
     }
 
 
-
-
     function renderItems(arr) {
         const items = arr.map((item,i) => {
             let imgStyle = {'objectFit': 'cover'};
