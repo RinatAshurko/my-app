@@ -6,7 +6,7 @@ class ErrorBounder extends Component{
         error: false
     }
 
-    componentDidCatch(error, errorInfo){
+    componentDidCatch(error){
         this.setState({
             error: true
         })

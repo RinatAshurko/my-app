@@ -3,6 +3,7 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import ErrorBounder from '../errorBounder/ErrorBounder';
+import CharFinder from "../charFinder/CharFinder";
 
 import decoration from '../../resources/img/vision.png';
 
@@ -25,13 +26,20 @@ const MainPage = () => {
                 <ErrorBounder> 
                     <CharList onCharSelected={onCharSelected}/>
                 </ErrorBounder>
-
+                <div>
                 <ErrorBounder>
                     <CharInfo charId={selectedChar}/>
                 </ErrorBounder>  
+                <ErrorBounder>
+                    <CharFinder/>
+                </ErrorBounder>
+                </div>
+
             </div>  
                 <img className="bg-decoration" src={decoration} alt="vision"/> 
         </>
+
+        
     )
 }
 

@@ -26,16 +26,12 @@ const Comics =  () => {
     }
 
     const onComicsListLoaded = (newItemLoad) => {
-        let ended = false;
-
-        if (newItemLoad.length < 8) {
-            ended = true;
-        }
+        const  isEnded = newItemLoad.length < 8;
 
         setComicsList(comicsList => [...comicsList, ...newItemLoad]);
         setNewItemLoading(false);
         setOffset(offset => offset + 8);
-        setComicsEnded(ended);
+        setComicsEnded(isEnded);
     }
 
 
