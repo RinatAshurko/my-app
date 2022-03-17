@@ -7,6 +7,25 @@ import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 
+const setContent = (process, Component, newItemLoading) => {
+    switch(process){
+        case 'waiting':
+            return <Spinner/>
+        break;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>
+        break;
+        case 'error':
+            return <ErrorMessage/>
+        break;
+        case 'confirmed':
+            return <Component />
+        break;
+        default: 
+            throw new Error('Unexpected process state')
+    }
+}
+
 const CharList  = (props) => {
 
     const [charList, setCharList] = useState([]);
@@ -16,7 +35,7 @@ const CharList  = (props) => {
 
 
 
-    const {loading, error, getAllCharacters} = useMarvelService();
+    const {getAllCharacters, process, setProcess} = useMarvelService();
 
     const itemsRef = useRef([]);
 
@@ -33,7 +52,8 @@ const CharList  = (props) => {
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         getAllCharacters(offset)
-            .then(onCharListLoaded);
+            .then(onCharListLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
 
@@ -99,18 +119,10 @@ const CharList  = (props) => {
         )
     }
 
-    
 
-        const items = renderItems(charList);
-
-
-        const errorMessage = error ? <ErrorMessage/> : null;
-        const spinner = loading && !newItemLoading ? <Spinner/> : null;
             return (
                 <div className="char__list">
-                {errorMessage}
-                {spinner}
-                {items}
+                    {setContent(process, () => renderItems(charList), newItemLoading)}
                 <button className="button button__main button__long"
                         disabled={newItemLoading}
                         onClick={() => onRequest(offset)} style={{'display': charEnded ? 'none':'block'}}>

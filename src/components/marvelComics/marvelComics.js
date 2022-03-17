@@ -7,6 +7,25 @@ import Spinner from "../spinner/Spinner";
 
 import './marvelComics.scss';
 
+const setContent = (process, Component, newItemLoading) => {
+    switch(process){
+        case 'waiting':
+            return <Spinner/>
+        break;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>
+        break;
+        case 'error':
+            return <ErrorMessage/>
+        break;
+        case 'confirmed':
+            return <Component />
+        break;
+        default: 
+            throw new Error('Unexpected process state')
+    }
+}
+
 const Comics =  () => {
 
     const [comicsList, setComicsList] = useState([]);
@@ -17,12 +36,13 @@ const Comics =  () => {
 
 
 
-    const {loading, error, getAllComics} = useMarvelService();
+    const { getAllComics, setProcess, process} = useMarvelService();
 
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         getAllComics(offset)
-            .then(onComicsListLoaded);
+            .then(onComicsListLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
     const onComicsListLoaded = (newItemLoad) => {
@@ -64,20 +84,16 @@ const Comics =  () => {
         )
     }
 
-    const items = renderComic(comicsList);
-
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading && !newItemLoading ? <Spinner/> : null;
 
     return (
         <div 
         className="comics__list"
         >
-            {errorMessage}
-            {spinner}
-            {items}
+            {setContent(process, () => renderComic(comicsList), newItemLoading)}
             <button className="button button__main button__long"
-            onClick={() => {onRequest(offset)}} style={{'display': comicsEnded ? 'none': 'block'}}
+            onClick={() => {onRequest(offset)}} 
+            style={{'display': comicsEnded ? 'none': 'block'}}
+            disabled={newItemLoading}
             >
                 <div className='inner'>load more</div>
             </button>

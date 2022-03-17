@@ -4,6 +4,7 @@ import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 import ErrorBounder from '../errorBounder/ErrorBounder';
 import CharFinder from "../charFinder/CharFinder";
+import {Helmet} from "react-helmet";
 
 import decoration from '../../resources/img/vision.png';
 
@@ -14,11 +15,19 @@ const MainPage = () => {
 
     const onCharSelected = (id) => {
         setSelectedChar(id);
-
     }
 
     return(
         <>
+            <Helmet>
+                <meta
+                    name='description'
+                    content='Characters Page'
+                />
+                <title>
+                    {'Characters Page'}
+                </title>
+            </Helmet>
             <ErrorBounder> 
                 <RandomChar/>
             </ErrorBounder> 

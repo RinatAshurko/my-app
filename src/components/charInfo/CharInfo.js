@@ -3,18 +3,15 @@ import { Link } from 'react-router-dom';
 
 import './charInfo.scss';
 
-import Spinner from '../spinner/Spinner';
-import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
-import Skeleton from '../skeleton/Skeleton';
+import setContent from '../utils/setContent';
 
 
 const CharInfo = (props) => {
 
-
     const [char, setCharList] = useState(null);
 
-    const {loading, error, getCharacter, clearError} = useMarvelService();
+    const {getCharacter, clearError, setProcess, process} = useMarvelService();
 
 
     useEffect(() => {
@@ -33,6 +30,7 @@ const CharInfo = (props) => {
 
         getCharacter(charId)
             .then(onCharLoaded)
+            .then(() => setProcess('confirmed'))
     }
 
     const onCharLoaded = (char) => {
@@ -45,23 +43,15 @@ const CharInfo = (props) => {
 
      
 
-        const skeleton = loading || error || char ? null : <Skeleton/>;
-        const errorMessage = error ? <ErrorMessage/> : null;
-        const spinner = loading ? <Spinner/> : null;
-        const content = !(error || loading || !char) ? <View char={char}/>: null;
-
         return (
             <div className="char__info">
-                {skeleton}
-                {errorMessage}
-                {spinner}
-                {content}
+                {setContent(process,View, char)}
             </div>
         )
     }
 
-const View = ({char}) => {
-    const {name, descr, thumbnail, wiki, homepage, comics, available} = char;
+const View = ({data}) => {
+    const {name, descr, thumbnail, wiki, homepage, comics, available} = data;
 
     const text = 'This hero doesnt have a some comics abnout him';
 
@@ -98,7 +88,7 @@ const View = ({char}) => {
                         if (i > 10) return;
                         return (
                             <li  src={item.id} key ={i} className="char__comics-item" available={available} >
-                                <Link to={`/characters/${char.id}/comics`}>
+                                <Link to={`/characters/${data.id}/comics`}>
                                     {item.name}
                                 </Link>  
                             </li>

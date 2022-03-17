@@ -1,4 +1,5 @@
 import './character.scss';
+import {Helmet} from "react-helmet";
 
 const Character = ({data}) => {
 
@@ -6,6 +7,15 @@ const Character = ({data}) => {
 
     return (
         <div className="character">
+            <Helmet>
+                <meta
+                    name='description'
+                    content={`${name} page`}
+                />
+                <title>
+                    {`${name} page`}
+                </title>
+            </Helmet>
             <img src={thumbnail} alt={name} className="character__img"/>
             <div className="character__info">
                 <h2 className="character__name">{name}</h2>
